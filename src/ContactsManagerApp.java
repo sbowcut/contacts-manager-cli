@@ -5,12 +5,12 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.*;
 
-class ContactsManager extends Contact {
+class ContactsManager extends AppMethods {
     public static void main(String[] args) {
-        contactListApp(new Contact());
+        contactListApp(new AppMethods());
     }
 
-    public static void contactListApp(Contact in) {
+    public static void contactListApp(AppMethods in) {
         System.out.println("Main Menu");
         boolean run = true;
         while (run) {
@@ -51,7 +51,7 @@ class ContactsManager extends Contact {
         }
     }
 
-    public static void addContact(Contact in) {
+    public static void addContact(AppMethods in) {
         Path toOurDataPlace = Paths.get("src");
         Path toOurDataFile = Paths.get(String.valueOf(toOurDataPlace), "contacts.txt");
         List<String> Contacts = new ArrayList<>();
@@ -72,7 +72,7 @@ class ContactsManager extends Contact {
         return format;
     }
 
-    public static void searchByName(Contact in) {
+    public static void searchByName(AppMethods in) {
         Path toOurDataPlace = Paths.get("src");
         Path toOurDataFile = Paths.get(String.valueOf(toOurDataPlace), "contacts.txt");
         String name = in.getString("What Contact would you like view?");
@@ -92,7 +92,7 @@ class ContactsManager extends Contact {
         }
     }
 
-    public static void deleteContact(Contact in) {
+    public static void deleteContact(AppMethods in) {
         Path toOurDataPlace = Paths.get("src");
         Path toOurDataFile = Paths.get(String.valueOf(toOurDataPlace), "contacts.txt");
         String name = in.getString("What Contact would you like to delete?");
