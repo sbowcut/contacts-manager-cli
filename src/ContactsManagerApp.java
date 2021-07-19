@@ -6,6 +6,37 @@ import java.nio.file.StandardOpenOption;
 import java.util.*;
 
 class ContactsManager extends Contact {
+    public static void main(String[] args) {
+        contactListApp(new Contact());
+    }
+
+    public static void contactListApp(Contact in) {
+        System.out.println("Main Menu");
+        boolean run = true;
+        while (run) {
+            System.out.println("Please make your selection:");
+            System.out.println("1. View Contacts");
+            System.out.println("2. Add a new contact");
+            System.out.println("3. Search by contact");
+            System.out.println("4. Delete contact");
+            int userResp = in.getInt("Please enter your selection in the terminal", 1, 4);
+            in.getString();
+            switch (userResp) {
+                case 1:
+                    viewContacts();
+                    break;
+                case 2:
+                    addContact(in);
+                    break;
+                case 3:
+                    searchByName(in);
+                    break;
+                case 4:
+                    deleteContact(in);
+            }
+        }
+    }
+
     public static void viewContacts() {
         Path toOurDataPlace = Paths.get("src");
         Path toOurDataFile = Paths.get(String.valueOf(toOurDataPlace), "contacts.txt");
@@ -84,36 +115,5 @@ class ContactsManager extends Contact {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
-    }
-
-    public static void contactListApp(Contact in) {
-        System.out.println("Main Menu");
-        boolean run = true;
-        while (run) {
-            System.out.println("Please make your selection:");
-            System.out.println("1. View Contacts");
-            System.out.println("2. Add a new contact");
-            System.out.println("3. Search by contact");
-            System.out.println("4. Delete contact");
-            int userResp = in.getInt("Please enter your selection in the terminal", 1, 4);
-            in.getString();
-            switch (userResp) {
-                case 1:
-                    viewContacts();
-                    break;
-                case 2:
-                    addContact(in);
-                    break;
-                case 3:
-                    searchByName(in);
-                    break;
-                case 4:
-                    deleteContact(in);
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        contactListApp(new Contact());
     }
 }
