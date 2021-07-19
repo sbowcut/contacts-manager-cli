@@ -54,27 +54,24 @@ class ContactsManager extends AppMethods {
     public static void addContact(AppMethods in) {
         Path dataSource = Paths.get("src");
         Path contactsTxt = Paths.get(String.valueOf(dataSource), "contacts.txt");
-        List<String> Contacts = new ArrayList<>();
+        List<String> ContactsList = new ArrayList<>();
         String nameToAdd = in.getString("Please enter the name of the Person:");
         long phoneNumber = in.getInt("Please enter their Phone Number:");
         String format = "%1$-30s | %2$-30s";
-        String ex[] = {nameToAdd, Long.toString(phoneNumber)};
-        String newContact = format(String.format(format, (Object[]) ex));
-        Contacts.add(newContact);
+        String nameNumber[] = {nameToAdd, Long.toString(phoneNumber)};
+        String newContact = format(String.format(format, (Object[]) nameNumber));
+        ContactsList.add(newContact);
         try {
-            Files.write(contactsTxt, Contacts, StandardOpenOption.APPEND);
+            Files.write(contactsTxt, ContactsList, StandardOpenOption.APPEND);
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
     }
 
-    private static String format(String format) {
-        return format;
-    }
 
     public static void searchByName(AppMethods in) {
-        Path dataSRrc = Paths.get("src");
-        Path contactsTxt = Paths.get(String.valueOf(dataSRrc), "contacts.txt");
+        Path dataSrc = Paths.get("src");
+        Path contactsTxt = Paths.get(String.valueOf(dataSrc), "contacts.txt");
         String viewName = in.getString("What contact would you like view?");
         List<String> currentList = new ArrayList<>();
         try {
@@ -82,7 +79,6 @@ class ContactsManager extends AppMethods {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
-
         Iterator<String> listIterator = currentList.iterator();
         while (listIterator.hasNext()) {
             String list = listIterator.next();
@@ -115,5 +111,9 @@ class ContactsManager extends AppMethods {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
+    }
+
+    private static String format(String format) {
+        return format;
     }
 }

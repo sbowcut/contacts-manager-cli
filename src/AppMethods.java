@@ -26,7 +26,7 @@ public class AppMethods {
             number = Long.parseLong(getString(prompt));
             return number;
         } catch (NumberFormatException nfe) {
-            System.out.println("Wrong input, try again: ");
+            System.out.println("Not a valid number, try again.");
             return getInt(prompt);
         }
     }
