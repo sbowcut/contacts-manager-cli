@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
-public class Contact {
+public class AppMethods {
     private final Scanner scanner;
 
-    public Contact() {
+    public AppMethods() {
         this.scanner = new Scanner(System.in);
     }
 
